@@ -1,0 +1,1097 @@
+  [1m[35m (196.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (157.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateMydata (20171107225203)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "mydata" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "lastname" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171107225203"]]
+  [1m[35m (142.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-07 22:58:27.494351"], ["updated_at", "2017-11-07 22:58:27.494351"]]
+  [1m[35m (292.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2017-11-07 18:04:04 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb (44.0ms)
+Completed 200 OK in 862ms (Views: 390.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-11-07 18:08:21 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb (10.0ms)
+Completed 200 OK in 287ms (Views: 149.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:09:09 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (79.1ms)
+Completed 200 OK in 16148ms (Views: 16005.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:10:00 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (652.0ms)
+  Rendered mydata/new.html.erb within layouts/application (774.1ms)
+Completed 200 OK in 1512ms (Views: 1373.1ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 18:10:24 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"i9fr+PvpmFSTlTmPgtsKgStEj+Oq1v0utqf35NM4PLe97v9gqaXSQh9O2IBq1YsuPNBnWJliWpZRnIsZUGM0EA==", "mydatum"=>{"name"=>"manuel", "lastname"=>"muñoz selmi"}, "commit"=>"Create Mydatum"}
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "manuel"], ["lastname", "muñoz selmi"], ["created_at", "2017-11-07 23:10:24.652330"], ["updated_at", "2017-11-07 23:10:24.652330"]]
+  [1m[35m (110.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/1
+Completed 302 Found in 127ms (ActiveRecord: 113.1ms)
+
+
+Started GET "/mydata/1" for 127.0.0.1 at 2017-11-07 18:10:24 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 769ms (Views: 580.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:13:37 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 584ms (Views: 476.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/1" for 127.0.0.1 at 2017-11-07 18:13:44 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 610ms (Views: 497.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:17:29 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (6.0ms)
+  Rendered mydata/new.html.erb within layouts/application (116.1ms)
+Completed 200 OK in 676ms (Views: 565.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 18:17:54 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vcHSBQwlfeITKF0k0X3EVbUpS+f2PgWgZw27r88NTraL+MadXmk39J/zvCs5c0X6or2jXMWKohiANsdSTFZGEQ==", "mydatum"=>{"name"=>"jose", "lastname"=>"benites ramos"}, "commit"=>"Create Mydatum"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "jose"], ["lastname", "benites ramos"], ["created_at", "2017-11-07 23:17:54.739078"], ["updated_at", "2017-11-07 23:17:54.739078"]]
+  [1m[35m (195.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/2
+Completed 302 Found in 208ms (ActiveRecord: 197.5ms)
+
+
+Started GET "/mydata/2" for 127.0.0.1 at 2017-11-07 18:17:54 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 555ms (Views: 445.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:18:07 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 560ms (Views: 450.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:19:54 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 592ms (Views: 481.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:19:57 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (110.1ms)
+Completed 200 OK in 636ms (Views: 527.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 18:20:13 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IdvjsaenpZInD10Q+poeItUN58d1W3QLeMmF/D8k58EX4vcp9evvhKvUvB8SlJ+NwpkPfEbv07Of8vkBvH/vZg==", "mydatum"=>{"name"=>"elen", "lastname"=>"rodrigues gomez"}, "commit"=>"Create Mydatum"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "elen"], ["lastname", "rodrigues gomez"], ["created_at", "2017-11-07 23:20:13.858577"], ["updated_at", "2017-11-07 23:20:13.858577"]]
+  [1m[35m (132.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/3
+Completed 302 Found in 145ms (ActiveRecord: 134.8ms)
+
+
+Started GET "/mydata/3" for 127.0.0.1 at 2017-11-07 18:20:14 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 535ms (Views: 426.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:20:17 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 550ms (Views: 441.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:34:05 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 584ms (Views: 468.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/4" for 127.0.0.1 at 2017-11-07 18:34:14 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 594ms (Views: 473.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:34:23 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (4.0ms)
+  Rendered mydata/new.html.erb within layouts/application (121.3ms)
+Completed 200 OK in 688ms (Views: 579.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:34:26 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 605ms (Views: 479.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:43:57 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (6.0ms)
+  Rendered mydata/new.html.erb within layouts/application (128.1ms)
+Completed 200 OK in 896ms (Views: 742.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:50:01 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 774ms (Views: 562.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:50:06 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (122.1ms)
+Completed 200 OK in 734ms (Views: 623.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:50:10 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 689ms (Views: 574.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:50:11 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (136.1ms)
+Completed 200 OK in 804ms (Views: 681.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:51:41 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 682ms (Views: 574.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:52:16 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (126.1ms)
+Completed 200 OK in 775ms (Views: 664.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:52:17 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 795ms (Views: 623.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:52:31 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (17.0ms)
+  Rendered mydata/new.html.erb within layouts/application (181.1ms)
+Completed 200 OK in 920ms (Views: 811.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:52:57 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 732ms (Views: 604.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:52:58 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (132.1ms)
+Completed 200 OK in 947ms (Views: 795.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:53:03 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 681ms (Views: 571.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:53:04 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (121.1ms)
+Completed 200 OK in 818ms (Views: 686.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:55:17 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (119.0ms)
+Completed 200 OK in 787ms (Views: 664.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:59:25 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 625ms (Views: 519.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:59:27 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (6.0ms)
+  Rendered mydata/new.html.erb within layouts/application (122.1ms)
+Completed 200 OK in 761ms (Views: 648.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:59:31 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 633ms (Views: 521.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:59:32 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (7.0ms)
+  Rendered mydata/new.html.erb within layouts/application (134.1ms)
+Completed 200 OK in 880ms (Views: 752.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:59:42 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (4.0ms)
+  Rendered mydata/new.html.erb within layouts/application (132.0ms)
+Completed 200 OK in 734ms (Views: 625.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 18:59:46 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (4.0ms)
+  Rendered mydata/new.html.erb within layouts/application (114.0ms)
+Completed 200 OK in 792ms (Views: 651.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 18:59:49 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 636ms (Views: 509.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:01:54 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (133.1ms)
+Completed 200 OK in 774ms (Views: 659.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:01:55 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 731ms (Views: 585.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:02:17 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (127.1ms)
+Completed 200 OK in 755ms (Views: 643.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:02:21 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 666ms (Views: 542.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:03:18 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (119.1ms)
+Completed 200 OK in 736ms (Views: 625.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:03:51 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 668ms (Views: 558.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:03:52 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/new.html.erb within layouts/application (464.3ms)
+Completed 500 Internal Server Error in 958ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial mydata/_xcxc, application/_xcxc with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "C:/Users/admin/Documents/GitHub/Ruby/PryRubyonRails/blog_app/app/views"
+):
+    1: <h1>Registrar Usuario</h1>
+    2: 
+    3: <%= render 'xcxc', mydatum: @mydatum %>
+    4: 
+    5: <%= link_to 'Regresar', mydata_path %>
+  
+app/views/mydata/new.html.erb:3:in `_app_views_mydata_new_html_erb__499137987_80193108'
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (19.0ms)
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (22.0ms)
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (6456.4ms)
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:04:04 -0500
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:04:06 -0500
+Processing by MydataController#index as HTML
+Processing by MydataController#new as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  Rendering mydata/new.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (1631.1ms)
+  Rendered mydata/_form.html.erb (6.1ms)
+  Rendered mydata/new.html.erb within layouts/application (1774.3ms)
+Completed 200 OK in 10205ms (Views: 9816.6ms | ActiveRecord: 1.0ms)
+
+
+Completed 200 OK in 10084ms (Views: 9727.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:06:53 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (116.1ms)
+Completed 200 OK in 740ms (Views: 615.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 19:11:40 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vcebQn8iep66CAQ5ziBoeLvIUU0odi4ebTJe57psMyj3VSVxGWo+iCoF7J9l4u4fSDrfJPwdJXnU5W1MuTWVYA==", "mydatum"=>{"name"=>"", "lastname"=>""}, "commit"=>"Create Mydatum"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (132.2ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["lastname", ""], ["created_at", "2017-11-08 00:11:40.960915"], ["updated_at", "2017-11-08 00:11:40.960915"]]
+  [1m[35m (140.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/14
+Completed 302 Found in 285ms (ActiveRecord: 272.3ms)
+
+
+Started GET "/mydata/14" for 127.0.0.1 at 2017-11-07 19:11:41 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 882ms (Views: 674.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:12:21 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 630ms (Views: 523.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:12:23 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (113.1ms)
+Completed 200 OK in 683ms (Views: 575.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 19:12:25 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N0YTvQv5b61UKrSDUvJbTln25aUs13vA9y3VS7cmnxMBfwclWbUlu9jxVYy6/NrhTmINHh9j3HgQFqm2NH2XtA==", "mydatum"=>{"name"=>"", "lastname"=>""}, "commit"=>"Create Mydatum"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["lastname", ""], ["created_at", "2017-11-08 00:12:26.050296"], ["updated_at", "2017-11-08 00:12:26.050296"]]
+  [1m[35m (176.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/15
+Completed 302 Found in 189ms (ActiveRecord: 178.3ms)
+
+
+Started GET "/mydata/15" for 127.0.0.1 at 2017-11-07 19:12:26 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 693ms (Views: 557.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:12:38 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 617ms (Views: 503.7ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/mydata/14" for 127.0.0.1 at 2017-11-07 19:12:43 -0500
+Processing by MydataController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wjcYMjmDhI/YUpmstK5RsxIv3PbhtMP5ygUiGjsEmoCIpaYBX8vAmUhfcQofbNfU4d1SnzXfyJ5z0hGxOF08yA==", "id"=>"14"}
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[31mDELETE FROM "mydata" WHERE "mydata"."id" = ?[0m  [["id", 14]]
+  [1m[35m (128.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata
+Completed 302 Found in 143ms (ActiveRecord: 131.1ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:12:43 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 777ms (Views: 619.5ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/mydata/15" for 127.0.0.1 at 2017-11-07 19:12:56 -0500
+Processing by MydataController#destroy as HTML
+  Parameters: {"authenticity_token"=>"msu8YVyQQXk2l8mCle89qrl4L72ZYabzsopv9Js+FK/QWQJSOtgFb6aaISQ+LbvNSoqh1E0KrZQLXVxfmGey5w==", "id"=>"15"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[31mDELETE FROM "mydata" WHERE "mydata"."id" = ?[0m  [["id", 15]]
+  [1m[35m (160.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata
+Completed 302 Found in 173ms (ActiveRecord: 163.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:12:57 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 790ms (Views: 639.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:13:02 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (111.1ms)
+Completed 200 OK in 686ms (Views: 580.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 19:13:04 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0KqekrZzNwsbcX2dWTDyhUzNsY+OORSkmcZ2var4k6fmk4oK5D99HZeqnJKxPnMqW1lZNL2Nsxx+/QpAKaObAA==", "mydatum"=>{"name"=>"", "lastname"=>""}, "commit"=>"Create Mydatum"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["lastname", ""], ["created_at", "2017-11-08 00:13:04.302924"], ["updated_at", "2017-11-08 00:13:04.302924"]]
+  [1m[35m (200.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/16
+Completed 302 Found in 213ms (ActiveRecord: 202.3ms)
+
+
+Started GET "/mydata/16" for 127.0.0.1 at 2017-11-07 19:13:04 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 720ms (Views: 568.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:13:44 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 618ms (Views: 507.4ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/mydata/16" for 127.0.0.1 at 2017-11-07 19:13:47 -0500
+Processing by MydataController#destroy as HTML
+  Parameters: {"authenticity_token"=>"n1yj6vtc7S1c7zQlAesJ6E0fWpoiQzii5q1PQiktQg7Vzh3ZnRSpO8zi3IOqKY+Pvu3U8/YoM8VfenzpKnTkRg==", "id"=>"16"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[31mDELETE FROM "mydata" WHERE "mydata"."id" = ?[0m  [["id", 16]]
+  [1m[35m (121.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata
+Completed 302 Found in 133ms (ActiveRecord: 123.1ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:13:48 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 730ms (Views: 595.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:13:57 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (2.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 712ms (Views: 590.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:14:01 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (112.1ms)
+Completed 200 OK in 803ms (Views: 679.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:21:21 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (2.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 681ms (Views: 567.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:21:23 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (113.1ms)
+Completed 200 OK in 762ms (Views: 636.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 19:21:27 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZZpxO4HAuvUBC04kyhAoMImybWMB5H4c8A6ajiM424lTo2Wj04zw443QrysiHqmfniaF2DJQ2aQXNeZzoGPTLg==", "mydatum"=>{"name"=>"", "lastname"=>""}, "commit"=>"Create Mydatum"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["lastname", ""], ["created_at", "2017-11-08 00:21:27.328592"], ["updated_at", "2017-11-08 00:21:27.328592"]]
+  [1m[35m (119.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/14
+Completed 302 Found in 131ms (ActiveRecord: 122.2ms)
+
+
+Started GET "/mydata/14" for 127.0.0.1 at 2017-11-07 19:21:27 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 698ms (Views: 557.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:21:39 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 602ms (Views: 495.8ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/mydata/14" for 127.0.0.1 at 2017-11-07 19:21:44 -0500
+Processing by MydataController#destroy as HTML
+  Parameters: {"authenticity_token"=>"xjw2aae5wYbulMIo93ElZkR4Vvb8dG+DfVTonolMr6aMrohawfGFkH6ZKo5cs6MBt4rYnygfZOTEg9s1ihUJ7g==", "id"=>"14"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[31mDELETE FROM "mydata" WHERE "mydata"."id" = ?[0m  [["id", 14]]
+  [1m[35m (131.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata
+Completed 302 Found in 144ms (ActiveRecord: 133.2ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:21:44 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 716ms (Views: 576.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:26:43 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (122.1ms)
+Completed 200 OK in 731ms (Views: 619.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:26:45 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 599ms (Views: 490.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:26:47 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 787ms (Views: 628.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:26:50 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (4.0ms)
+  Rendered mydata/new.html.erb within layouts/application (134.1ms)
+Completed 200 OK in 745ms (Views: 635.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 19:26:52 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ueFC9+dwmzIQTjSR1leose9ZZQ0F/GRzs3haQAPhspGP2FZvtTzRJJyV1Z4+WSke+M2NtjZIw8tUQya9gLq6Ng==", "mydatum"=>{"name"=>"", "lastname"=>""}, "commit"=>"Create Mydatum"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["lastname", ""], ["created_at", "2017-11-08 00:26:52.770322"], ["updated_at", "2017-11-08 00:26:52.770322"]]
+  [1m[35m (162.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/15
+Completed 302 Found in 175ms (ActiveRecord: 165.1ms)
+
+
+Started GET "/mydata/15" for 127.0.0.1 at 2017-11-07 19:26:52 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 767ms (Views: 613.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:26:57 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 638ms (Views: 503.2ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/mydata/15" for 127.0.0.1 at 2017-11-07 19:27:02 -0500
+Processing by MydataController#destroy as HTML
+  Parameters: {"authenticity_token"=>"qXUzQETl4NoOYRO3WLqy9zqIdlvACfrXAKVr+AcqYGnj541zIq2kzJ5s+xHzeDSQyXr4MhRi8bC5clhTBHPGIQ==", "id"=>"15"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[31mDELETE FROM "mydata" WHERE "mydata"."id" = ?[0m  [["id", 15]]
+  [1m[35m (156.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata
+Completed 302 Found in 173ms (ActiveRecord: 159.9ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:27:02 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 730ms (Views: 587.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:27:13 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (112.1ms)
+Completed 200 OK in 774ms (Views: 656.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:42:09 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (120.1ms)
+Completed 200 OK in 2367ms (Views: 1673.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:56:17 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (1652.1ms)
+  Rendered mydata/new.html.erb within layouts/application (1802.1ms)
+Completed 500 Internal Server Error in 2250ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `mydatum' for #<#<Class:0x3997ad0>:0x91cda90>):
+    1: <%= form_for(mydatum) do |f| %>
+    2:   <% if mydatum.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(mydatum.errors.count, "error") %> prohibited this mydatum from being saved:</h2>
+  
+app/views/mydata/_form.html.erb:1:in `_app_views_mydata__form_html_erb___255529456_76137204'
+app/views/mydata/new.html.erb:3:in `_app_views_mydata_new_html_erb__499137987_76443756'
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 19:56:24 -0500
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+Processing by MydataController#index as HTML
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (165.1ms)
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendering mydata/index.html.erb within layouts/application
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.0ms)
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (1900.3ms)
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (6337.4ms)
+Completed 200 OK in 23433ms (Views: 21423.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 19:56:57 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/new.html.erb within layouts/application (117.1ms)
+Completed 200 OK in 1386ms (Views: 1270.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 20:05:05 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Jl/KajL2uBrBrX4nuv8OzvJSj4otRF0TVMNXmWGHxKVszXRZVL78DFGgloERPYipAaAB4/kvVnTtFGQyYt5i7Q==", "mydatum"=>{"name"=>"", "lastname"=>""}, "commit"=>"Crear"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (66.1ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["lastname", ""], ["created_at", "2017-11-08 01:05:06.493124"], ["updated_at", "2017-11-08 01:05:06.493124"]]
+  [1m[35m (120.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/16
+Completed 302 Found in 201ms (ActiveRecord: 186.1ms)
+
+
+Started GET "/mydata/16" for 127.0.0.1 at 2017-11-07 20:05:07 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (72.0ms)
+Completed 200 OK in 2934ms (Views: 2064.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/16/edit" for 127.0.0.1 at 2017-11-07 20:05:20 -0500
+Processing by MydataController#edit as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering mydata/edit.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (29.0ms)
+  Rendered mydata/edit.html.erb within layouts/application (649.4ms)
+Completed 200 OK in 3704ms (Views: 3064.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:05:39 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 1674ms (Views: 1524.8ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/mydata/16" for 127.0.0.1 at 2017-11-07 20:05:55 -0500
+Processing by MydataController#destroy as HTML
+  Parameters: {"authenticity_token"=>"UG/2lAqOQSiHLBqz4dzGmdERr+AtVhemkV1V17EpelMa/UinbMYFPhch8hVKHkD+IuMhifk9HMEoimZ8snDcGw==", "id"=>"16"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[31mDELETE FROM "mydata" WHERE "mydata"."id" = ?[0m  [["id", 16]]
+  [1m[35m (141.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata
+Completed 302 Found in 311ms (ActiveRecord: 144.6ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:05:56 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (80.1ms)
+Completed 200 OK in 2047ms (Views: 1468.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 20:07:06 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (177.2ms)
+  Rendered mydata/new.html.erb within layouts/application (288.2ms)
+Completed 200 OK in 2732ms (Views: 1863.6ms | ActiveRecord: 51.8ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:07:16 -0500
+Processing by MydataController#index as HTML
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:07:18 -0500
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+Processing by MydataController#index as HTML
+  Rendered mydata/index.html.erb within layouts/application (81.8ms)
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 20:07:21 -0500
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (83.1ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+Processing by MydataController#new as HTML
+  Rendered mydata/index.html.erb within layouts/application (1887.8ms)
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (68.0ms)
+  Rendered mydata/new.html.erb within layouts/application (799.1ms)
+Completed 200 OK in 11051ms (Views: 10451.3ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 8621ms (Views: 7766.2ms | ActiveRecord: 83.1ms)
+
+
+Completed 200 OK in 4979ms (Views: 4252.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 20:07:33 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (37.9ms)
+  Rendered mydata/new.html.erb within layouts/application (153.1ms)
+Completed 200 OK in 2154ms (Views: 1351.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:07:38 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (391.4ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (416.4ms)
+Completed 200 OK in 2738ms (Views: 1885.3ms | ActiveRecord: 391.4ms)
+
+
+Started GET "/mydata/1" for 127.0.0.1 at 2017-11-07 20:12:06 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 2229ms (Views: 1426.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/mydata/6" for 127.0.0.1 at 2017-11-07 20:12:17 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 2221ms (Views: 1715.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/6/edit" for 127.0.0.1 at 2017-11-07 20:28:39 -0500
+Processing by MydataController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering mydata/edit.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (89.7ms)
+  Rendered mydata/edit.html.erb within layouts/application (206.7ms)
+Completed 200 OK in 947ms (Views: 755.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:28:41 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (20.8ms)
+Completed 200 OK in 871ms (Views: 725.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:41:23 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (64.1ms)
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 20:41:30 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (35.9ms)
+  Rendered mydata/new.html.erb within layouts/application (161.0ms)
+Completed 500 Internal Server Error in 8207ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (Permission denied @ utime_failed - C:/Users/admin/Documents/GitHub/Ruby/PryRubyonRails/blog_app/tmp/cache/assets/sprockets/v3.0/Bx/BxzoG0KxeNLac4xTNeJv3qfeytbNBw58xj2zD-xdbrE.cache):
+     5:     <%= csrf_meta_tags %>
+     6: 
+     7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb___210277471_71179020'
+Completed 200 OK in 4426ms (Views: 4121.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 20:41:37 -0500
+Processing by MydataController#new as HTML
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (37.0ms)
+  Rendered mydata/_form.html.erb (25.0ms)
+  Rendered mydata/new.html.erb within layouts/application (1952.5ms)
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (44.0ms)
+  Rendering C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (55.2ms)
+  Rendered C:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (6144.4ms)
+Completed 200 OK in 14912ms (Views: 12949.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:42:06 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 675ms (Views: 560.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 20:42:10 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (4.0ms)
+  Rendered mydata/new.html.erb within layouts/application (116.1ms)
+Completed 200 OK in 719ms (Views: 604.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/mydata" for 127.0.0.1 at 2017-11-07 20:42:13 -0500
+Processing by MydataController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BJ40p/jjfV4lrAHVL9v4mk9A6R9L2Z3Dk9b/jGz65WQypyA/qq83SKl34NrH1Xk1WNQBpHhtOnt07YNx76Htww==", "mydatum"=>{"name"=>"", "lastname"=>""}, "commit"=>"Create Mydatum"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "mydata" ("name", "lastname", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", ""], ["lastname", ""], ["created_at", "2017-11-08 01:42:13.902387"], ["updated_at", "2017-11-08 01:42:13.902387"]]
+  [1m[35m (201.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata/17
+Completed 302 Found in 272ms (ActiveRecord: 203.5ms)
+
+
+Started GET "/mydata/17" for 127.0.0.1 at 2017-11-07 20:42:14 -0500
+Processing by MydataController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mMydatum Load (16.9ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  Rendering mydata/show.html.erb within layouts/application
+  Rendered mydata/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 640ms (Views: 502.5ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/mydata/17/edit" for 127.0.0.1 at 2017-11-07 20:42:17 -0500
+Processing by MydataController#edit as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  Rendering mydata/edit.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (5.0ms)
+  Rendered mydata/edit.html.erb within layouts/application (144.3ms)
+Completed 200 OK in 773ms (Views: 659.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:42:18 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (1.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (26.9ms)
+Completed 200 OK in 629ms (Views: 522.1ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/mydata/17" for 127.0.0.1 at 2017-11-07 20:42:22 -0500
+Processing by MydataController#destroy as HTML
+  Parameters: {"authenticity_token"=>"GCIrj4tzKgVWbTfhXAht7M5KRahqwIFxulZjwuOv1ylSsJW87TtuE8Zg30f3yuuLPbjLwb6rihYDgVBp4PZxYQ==", "id"=>"17"}
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT  "mydata".* FROM "mydata" WHERE "mydata"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "mydata" WHERE "mydata"."id" = ?[0m  [["id", 17]]
+  [1m[35m (220.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/mydata
+Completed 302 Found in 235ms (ActiveRecord: 221.3ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:42:22 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 748ms (Views: 613.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata/new" for 127.0.0.1 at 2017-11-07 20:42:25 -0500
+Processing by MydataController#new as HTML
+  Rendering mydata/new.html.erb within layouts/application
+  Rendered mydata/_form.html.erb (72.3ms)
+  Rendered mydata/new.html.erb within layouts/application (178.0ms)
+Completed 200 OK in 1219ms (Views: 1090.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/mydata" for 127.0.0.1 at 2017-11-07 20:42:47 -0500
+Processing by MydataController#index as HTML
+  Rendering mydata/index.html.erb within layouts/application
+  [1m[36mMydatum Load (0.0ms)[0m  [1m[34mSELECT "mydata".* FROM "mydata"[0m
+  Rendered mydata/index.html.erb within layouts/application (258.2ms)
+Completed 200 OK in 2953ms (Views: 2841.2ms | ActiveRecord: 0.0ms)
+
+

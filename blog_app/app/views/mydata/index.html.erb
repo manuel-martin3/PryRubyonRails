@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Control de Usuarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mydata.each do |mydatum| %>
+      <tr>
+        <td><%= mydatum.name %></td>
+        <td><%= mydatum.lastname %></td>
+        <td><%= link_to 'Mostrar', mydatum %></td>
+        <td><%= link_to 'Editar', edit_mydatum_path(mydatum) %></td>
+        <td><%= link_to 'Eliminar', mydatum, method: :delete, data: { confirm: 'Esta segura de que quiere eliminar el registro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Registro', new_mydatum_path %>
